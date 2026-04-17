@@ -1,0 +1,168 @@
+/* =============================================
+   style.css — Portfolio stylesheet
+   Path: resources/css/style.css
+   ============================================= */
+
+/* ── RESET & BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:         #111111;
+  --bg-nav:     #0d0d0d;
+  --surface:    #1a1a1a;
+  --border:     #2a2a2a;
+  --text:       #d4cfc8;
+  --text-muted: #7a756e;
+  --accent:     #a8c5a0;   /* muted sage green — change to your taste */
+  --link:       #a8c5a0;
+  --link-hover: #c8e5c0;
+  --font:       'Georgia', serif;       /* display / headings */
+  --font-body:  system-ui, sans-serif;  /* body text */
+  --max-width:  680px;
+  --gap:        2.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  font-weight: 400;
+  padding-bottom: 4rem;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3 {
+  font-family: var(--font);
+  font-weight: normal;
+  line-height: 1.2;
+  color: #e8e3dc;
+}
+
+h1 { font-size: 2rem;   margin-bottom: 1rem; }
+h2 { font-size: 1.3rem; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+h3 { font-size: 1rem;   margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--text-muted); }
+
+p  { margin-bottom: 1rem; color: var(--text-muted); }
+
+a  { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+
+ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+ul li a {
+  color: var(--text);
+  font-weight: 500;
+}
+
+ul li span {
+  font-size: 0.9rem;
+}
+
+/* ── LAYOUT ── */
+header, main, footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── NAV ── */
+header {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  max-width: var(--max-width);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-title {
+  font-family: var(--font);
+  font-size: 1.1rem;
+  color: #e8e3dc;
+  text-decoration: none;
+}
+
+.site-title:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Language toggle button */
+#lang-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+#lang-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── SECTIONS ── */
+main {
+  margin-top: 2.5rem;
+}
+
+section {
+  margin-bottom: var(--gap);
+}
+
+/* ── FOOTER ── */
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+footer nav {
+  display: block; /* override flex from header nav */
+}
+
+footer a {
+  color: var(--text-muted);
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 480px) {
+  h1 { font-size: 1.6rem; }
+  body { font-size: 0.95rem; }
+}
