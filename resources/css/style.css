@@ -15,13 +15,13 @@
   --bg-nav:     #0d0d0d;
   --surface:    #1a1a1a;
   --border:     #2a2a2a;
-  --text:       #d4cfc8;
-  --text-muted: #7a756e;
-  --accent:     #a8c5a0;   /* muted sage green — change to your taste */
+  --text:       #de85f5;
+  --text-muted: #736e7a;
+  --accent:     #bd53d8;   
   --link:       #a8c5a0;
-  --link-hover: #c8e5c0;
-  --font:       'Georgia', serif;       /* display / headings */
-  --font-body:  system-ui, sans-serif;  /* body text */
+  --link-hover: #f1b55b;
+  --font:       'Georgia', serif;       
+  --font-body:  system-ui, sans-serif;  
   --max-width:  680px;
   --gap:        2.5rem;
 }
@@ -45,7 +45,7 @@ h1, h2, h3 {
   font-family: var(--font);
   font-weight: normal;
   line-height: 1.2;
-  color: #e8e3dc;
+  color: #d59af0;
 }
 
 h1 { font-size: 2rem;   margin-bottom: 1rem; }
@@ -84,6 +84,19 @@ header, main, footer {
   padding: 0 1.5rem;
 }
 
+img{
+  max-width: 30%;
+  height: auto;
+  border-radius: 90px;
+  border-color: #bd53d8;
+  border: 2px solid;
+}
+
+.small-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
 /* ── NAV ── */
 header {
   padding-top: 2rem;
@@ -100,7 +113,7 @@ nav {
 .site-title {
   font-family: var(--font);
   font-size: 1.1rem;
-  color: #e8e3dc;
+  color: #d59af0;
   text-decoration: none;
 }
 
@@ -150,7 +163,7 @@ footer {
 }
 
 footer nav {
-  display: block; /* override flex from header nav */
+  display: block; 
 }
 
 footer a {
