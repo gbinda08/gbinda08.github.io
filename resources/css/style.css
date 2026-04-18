@@ -17,13 +17,13 @@
   --border:     #2a2a2a;
   --text:       #de85f5;
   --text-muted: #736e7a;
-  --accent:     #bd53d8;   
-  --link:       #a8c5a0;
-  --link-hover: #f1b55b;
-  --font:       'Georgia', serif;       
-  --font-body:  system-ui, sans-serif;  
-  --max-width:  680px;
-  --gap:        2.5rem;
+  --accent:     #bd53d8;
+  --link:       #d59af0;    /* aligned with the purple theme */
+  --link-hover: #f1b55b;    /* warm amber hover — nice contrast */
+  --font:       'Georgia', serif;
+  --font-body:  system-ui, sans-serif;
+  --max-width:  860px;      /* wider to fit two columns */
+  --gap:        1.75rem;    /* tighter than before (was 2.5rem) */
 }
 
 html {
@@ -48,11 +48,11 @@ h1, h2, h3 {
   color: #d59af0;
 }
 
-h1 { font-size: 2rem;   margin-bottom: 1rem; }
+h1 { font-size: 2rem;   margin-bottom: 0.4rem; }
 h2 { font-size: 1.3rem; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
-h3 { font-size: 1rem;   margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--text-muted); }
+h3 { font-size: 1rem;   margin-top: 1.25rem; margin-bottom: 0.4rem; color: var(--text-muted); }
 
-p  { margin-bottom: 1rem; color: var(--text-muted); }
+p  { margin-bottom: 0.85rem; color: var(--text-muted); }
 
 a  { color: var(--link); text-decoration: none; }
 a:hover { color: var(--link-hover); text-decoration: underline; }
@@ -60,11 +60,11 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 ul {
   list-style: disc;
   padding-left: 1.4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 ul li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   color: var(--text-muted);
 }
 
@@ -84,24 +84,34 @@ header, main, footer {
   padding: 0 1.5rem;
 }
 
-img{
-  max-width: 30%;
+/* ── PROFILE IMAGE ── */
+img {
+  display: block;
+  max-width: 55%;
   height: auto;
   border-radius: 90px;
-  border-color: #bd53d8;
-  border: 2px solid;
+  border: 2px solid var(--accent);
+  margin: 0.75rem 0 0.4rem;
+}
+
+/* ── SUBTITLE under h1 ── */
+.also-known {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
 }
 
 .small-text {
   font-size: 0.75rem;
   color: var(--text-muted);
+  margin-bottom: 0.85rem;
 }
 
 /* ── NAV ── */
 header {
   padding-top: 2rem;
   padding-bottom: 1rem;
-  max-width: var(--max-width);
 }
 
 nav {
@@ -122,7 +132,6 @@ nav {
   text-decoration: none;
 }
 
-/* Language toggle button */
 #lang-toggle {
   background: transparent;
   border: 1px solid var(--border);
@@ -141,18 +150,46 @@ nav {
   color: var(--accent);
 }
 
-/* ── SECTIONS ── */
+/* ── MAIN & SECTIONS ── */
 main {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 
 section {
   margin-bottom: var(--gap);
 }
 
+/* ── TWO-COLUMN: intro + experience/interests ── */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin-bottom: var(--gap);
+}
+
+/* Stacks experience and interests vertically in the right column */
+.side-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.side-stack section {
+  margin-bottom: var(--gap);
+}
+
+/* ── TWO-COLUMN: links + support ── */
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: var(--gap);
+}
+
 /* ── FOOTER ── */
 footer {
-  margin-top: 4rem;
+  margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border);
   font-size: 0.85rem;
@@ -163,7 +200,7 @@ footer {
 }
 
 footer nav {
-  display: block; 
+  display: block;
 }
 
 footer a {
@@ -174,8 +211,18 @@ footer a:hover {
   color: var(--accent);
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 480px) {
+/* ── RESPONSIVE: collapse to single column on small screens ── */
+@media (max-width: 600px) {
+  .main-grid,
+  .bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  img {
+    max-width: 45%;
+  }
+
   h1 { font-size: 1.6rem; }
   body { font-size: 0.95rem; }
 }
