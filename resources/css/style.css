@@ -24,10 +24,7 @@
   --font-body:  system-ui, sans-serif;
   --max-width:  860px;      /* wider to fit two columns */
   --gap:        1.75rem;    /* tighter than before (was 2.5rem) */
-}
-
-html {
-  scroll-behavior: smooth;
+  --frame-height: 660px;    /* height of the fixed box */
 }
 
 body {
@@ -37,7 +34,6 @@ body {
   font-size: 1rem;
   line-height: 1.75;
   font-weight: 400;
-  padding-bottom: 4rem;
 }
 
 /* ── TYPOGRAPHY ── */
@@ -77,11 +73,37 @@ ul li span {
   font-size: 0.9rem;
 }
 
-/* ── LAYOUT ── */
-header, main, footer {
+/* ── LAYOUT ──
+   Everything lives inside one fixed-size box (.frame)
+   centred in the window. Only the content area scrolls,
+   and only if it really has to. */
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg-nav);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.frame {
+  width: 100%;
   max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  height: min(var(--frame-height), 100%);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.frame > main {
+  flex: 1;
+  min-height: 0;
 }
 
 /* ── PROFILE IMAGE ── */
@@ -110,8 +132,8 @@ img {
 
 /* ── NAV ── */
 header {
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border);
 }
 
 nav {
@@ -151,56 +173,170 @@ nav {
 }
 
 /* ── MAIN & SECTIONS ── */
-main {
-  margin-top: 2rem;
-}
-
 section {
   margin-bottom: var(--gap);
 }
 
-/* ── TWO-COLUMN: intro + experience/interests ── */
+section:last-child {
+  margin-bottom: 0;
+}
+
+/* ── TWO-COLUMN: intro (fixed) + tabs ── */
 .main-grid {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
+  grid-template-rows: minmax(0, 1fr);
   gap: 2.5rem;
-  align-items: start;
-  margin-bottom: var(--gap);
+  padding: 1.75rem 2rem;
 }
 
-/* Stacks experience and interests vertically in the right column */
-.side-stack {
+#intro p:last-child {
+  margin-bottom: 0;
+}
+
+#intro,
+.tab-panel {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* ── TABS ── */
+.tabs {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  min-height: 0;
 }
 
-.side-stack section {
-  margin-bottom: var(--gap);
+.tab-list {
+  display: flex;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.25rem;
 }
 
-/* ── TWO-COLUMN: links + support ── */
-.bottom-grid {
+.tab-list button {
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px;
+  padding: 0 0 0.4rem;
+  font-family: var(--font);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-list button:hover {
+  color: var(--link);
+}
+
+.tab-list button[aria-selected="true"] {
+  color: #d59af0;
+  border-bottom-color: var(--accent);
+}
+
+.tab-list button:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.tab-panel {
+  flex: 1;
+  min-height: 0;
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+/* Section titles inside panels are a step smaller than the tabs */
+.tab-panel h2 {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.tab-panel h3:first-of-type {
+  margin-top: 0;
+}
+
+/* Experience + interests side by side */
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.75rem;
+}
+
+.panel-grid section {
+  margin-bottom: 0;
+}
+
+/* Contact handles in two short columns */
+#contact ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  margin-bottom: var(--gap);
+  column-gap: 1.75rem;
+}
+
+/* ── PROJECTS ── */
+.project-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.project-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+.project-list li:last-child {
+  border-bottom: none;
+}
+
+.project-list a {
+  display: inline-block;
+  font-family: var(--font);
+  font-size: 1.05rem;
+}
+
+.project-list a::after {
+  content: " \2197";
+  font-family: var(--font-body);
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.project-list span {
+  display: block;
+}
+
+.project-list .stack {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
 }
 
 /* ── FOOTER ── */
 footer {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
+  padding: 0.75rem 2rem;
   border-top: 1px solid var(--border);
   font-size: 0.85rem;
   color: var(--text-muted);
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 footer nav {
   display: block;
+}
+
+footer p {
+  margin-bottom: 0;
 }
 
 footer a {
@@ -211,12 +347,37 @@ footer a:hover {
   color: var(--accent);
 }
 
+/* ── SINGLE-COLUMN PAGES (privacy) ── */
+.page {
+  padding: 1.75rem 2rem;
+  overflow-y: auto;
+}
+
 /* ── RESPONSIVE: collapse to single column on small screens ── */
-@media (max-width: 600px) {
-  .main-grid,
-  .bottom-grid {
+/* Short windows: let the box grow and the page scroll normally */
+@media (max-height: 560px), (max-width: 720px) {
+  html, body { height: auto; }
+  body { display: block; padding: 1rem; }
+  .frame { height: auto; margin: 0 auto; }
+  #intro, .tab-panel { overflow: visible; }
+}
+
+@media (max-width: 720px) {
+  .main-grid {
     grid-template-columns: 1fr;
-    gap: 0;
+    grid-template-rows: auto;
+    gap: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  header, footer, .page { padding-left: 1.25rem; padding-right: 1.25rem; }
+  footer { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+}
+
+@media (max-width: 600px) {
+  .panel-grid {
+    grid-template-columns: 1fr;
+    gap: var(--gap);
   }
 
   img {

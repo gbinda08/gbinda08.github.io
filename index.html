@@ -9,19 +9,18 @@
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="#" class="site-title">Binda</a>
-      <button id="lang-toggle" aria-label="Switch language">PT-BR</button>
-    </nav>
-  </header>
+  <div class="frame">
 
-  <main>
+    <header>
+      <nav>
+        <a href="./" class="site-title">Binda</a>
+        <button id="lang-toggle" aria-label="Switch language">PT-BR</button>
+      </nav>
+    </header>
 
-    <!-- TWO-COLUMN: intro (left) + experience & interests (right) -->
-    <div class="main-grid">
+    <main class="main-grid">
 
-      <!-- LEFT COLUMN: intro -->
+      <!-- LEFT COLUMN: intro (always visible) -->
       <section id="intro">
         <h1 data-en="Hello, I'm Binda." data-pt="Olá, sou Binda.">Hello, I'm Binda.</h1>
         <p class="also-known" data-en="Also known as Astra." data-pt="Também conhecido como Astra.">Also known as Astra.</p>
@@ -35,118 +34,126 @@
         </p>
       </section>
 
-      <!-- RIGHT COLUMN: experience + interests -->
-      <div class="side-stack">
+      <!-- RIGHT COLUMN: tabbed content -->
+      <div class="tabs">
 
-        <section id="experience">
-          <h2 data-en="Experience" data-pt="Experiência">Experience</h2>
-          <ul>
-            <li data-en="Freelancer Illustrator (6 years)" data-pt="Ilustrador Freelancer (6 anos)">Freelancer Illustrator (6 years)</li>
-            <li data-en="HTML, CSS, JavaScript (3+ years)" data-pt="HTML, CSS, JavaScript (3+ anos)">HTML, CSS, JavaScript (3+ years)</li>
-            <li data-en="Databases (MySQL) (2+ years)" data-pt="Banco de Dados (MySQL) (2+ anos)">Databases (MySQL) (2+ years)</li>
-            <li data-en="Graphic Design/Editing (2+ years)" data-pt="Design Gráfico/Edição (2+ anos)">Graphic Design/Editing (2+ years)</li>
-            <li data-en="Creative Writing (1 year)" data-pt="Escrita Criativa (1 ano)">Creative Writing (1 year)</li>
-            <li data-en="Content Creation (1 year)" data-pt="Criação de Conteúdo (1 ano)">Content Creation (1 year)</li>
-            <li data-en="Video Editing (3+ years)" data-pt="Edição de Vídeo (3+ anos)">Video Editing (3+ years)</li>
-          </ul>
-        </section>
+        <div class="tab-list" role="tablist">
+          <button role="tab" id="tab-about" aria-controls="about" aria-selected="true" data-en="About" data-pt="Sobre">About</button>
+          <button role="tab" id="tab-projects" aria-controls="projects" aria-selected="false" data-en="Projects" data-pt="Projetos">Projects</button>
+          <button role="tab" id="tab-links" aria-controls="links" aria-selected="false" data-en="Links" data-pt="Links">Links</button>
+        </div>
 
-        <section id="interests">
-          <h2 data-en="Interests" data-pt="Interesses">Interests</h2>
-          <ul>
-            <li data-en="Gaming" data-pt="Gaming">Gaming</li>
-            <li data-en="Anime &amp; Manga" data-pt="Anime &amp; Manga">Anime &amp; Manga</li>
-            <li data-en="Drawing" data-pt="Desenho">Drawing</li>
-            <li data-en="Writing" data-pt="Escrita">Writing</li>
-            <li data-en="Programming" data-pt="Programação">Programming</li>
-            <li data-en="Streaming" data-pt="Streaming">Streaming</li>
+        <!-- ABOUT: experience + interests -->
+        <div class="tab-panel" role="tabpanel" id="about" aria-labelledby="tab-about">
+          <div class="panel-grid">
+            <section id="experience">
+              <h2 data-en="Experience" data-pt="Experiência">Experience</h2>
+              <ul>
+                <li data-en="Freelancer Illustrator (6 years)" data-pt="Ilustrador Freelancer (6 anos)">Freelancer Illustrator (6 years)</li>
+                <li data-en="HTML, CSS, JavaScript (3+ years)" data-pt="HTML, CSS, JavaScript (3+ anos)">HTML, CSS, JavaScript (3+ years)</li>
+                <li data-en="Databases (MySQL) (2+ years)" data-pt="Banco de Dados (MySQL) (2+ anos)">Databases (MySQL) (2+ years)</li>
+                <li data-en="Graphic Design/Editing (2+ years)" data-pt="Design Gráfico/Edição (2+ anos)">Graphic Design/Editing (2+ years)</li>
+                <li data-en="Creative Writing (1 year)" data-pt="Escrita Criativa (1 ano)">Creative Writing (1 year)</li>
+                <li data-en="Content Creation (1 year)" data-pt="Criação de Conteúdo (1 ano)">Content Creation (1 year)</li>
+                <li data-en="Video Editing (3+ years)" data-pt="Edição de Vídeo (3+ anos)">Video Editing (3+ years)</li>
+              </ul>
+            </section>
+
+            <section id="interests">
+              <h2 data-en="Interests" data-pt="Interesses">Interests</h2>
+              <ul>
+                <li data-en="Gaming" data-pt="Gaming">Gaming</li>
+                <li data-en="Anime &amp; Manga" data-pt="Anime &amp; Manga">Anime &amp; Manga</li>
+                <li data-en="Drawing" data-pt="Desenho">Drawing</li>
+                <li data-en="Writing" data-pt="Escrita">Writing</li>
+                <li data-en="Programming" data-pt="Programação">Programming</li>
+                <li data-en="Streaming" data-pt="Streaming">Streaming</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+
+        <!-- PROJECTS: each one links straight to its live site -->
+        <div class="tab-panel" role="tabpanel" id="projects" aria-labelledby="tab-projects" hidden>
+          <p data-en="Things I have created over time." data-pt="Coisinhas que fiz ao longo do tempo.">
+            Things I have created over time.
+          </p>
+
+          <h3 data-en="Web" data-pt="Web">Web</h3>
+          <ul class="project-list">
+            <li>
+              <a href="https://gbinda08.github.io/Astra-Raksell-Wiki/" target="_blank" rel="noopener">Astra Raksell Wiki Page</a>
+              <span data-en="A website for the vtuber Astra Raksell."
+                    data-pt="Um website para o Vtuber, Astra Raksell.">
+                A website for the vtuber Astra Raksell.
+              </span>
+              <span class="stack">HTML · CSS · JavaScript</span>
+            </li>
+            <li>
+              <a href="https://gbinda08.github.io/JunqueiraBiju/" target="_blank" rel="noopener">Junqueira Biju</a>
+              <span data-en="Landing page for a jewelry store."
+                    data-pt="Landing Page para uma loja de bijuteria.">
+                Landing page for a jewelry store.
+              </span>
+              <span class="stack">HTML · CSS</span>
+            </li>
+            <li>
+              <a href="https://gbinda08.github.io/StreamBingo/" target="_blank" rel="noopener">Stream Bingo</a>
+              <span data-en="A bingo you can edit and save locally."
+                    data-pt="Um bingo que você pode editar e salvar localmente.">
+                A bingo you can edit and save locally.
+              </span>
+              <span class="stack">HTML · CSS · JavaScript</span>
+            </li>
           </ul>
-        </section>
+        </div>
+
+        <!-- LINKS: contact + support -->
+        <div class="tab-panel" role="tabpanel" id="links" aria-labelledby="tab-links" hidden>
+          <section id="contact">
+            <h2 data-en="Links/Contact" data-pt="Links/Contato">Links/Contact</h2>
+            <ul>
+              <li>GitHub: <a href="https://github.com/gbinda08" target="_blank">gbinda08</a></li>
+              <li>X (Twitter): <a href="https://twitter.com/AstraRaksell" target="_blank">AstraRaksell</a></li>
+              <li>Twitch: <a href="https://twitch.tv/AstraRaksell" target="_blank">AstraRaksell</a></li>
+              <li>Youtube: <a href="https://youtube.com/@AstraRaksell" target="_blank">AstraRaksell</a></li>
+              <li>Steam: <a href="https://steamcommunity.com/id/CrossGenesis" target="_blank">CrossGenesis</a></li>
+            </ul>
+          </section>
+
+          <section id="support">
+            <h2 data-en="Support" data-pt="Suporte">Support</h2>
+            <p data-en="Feel free to support me if you like my work!" data-pt="Sinta-se livre para me apoiar se gostar do meu trabalho!">
+              Feel free to support me if you like my work!
+            </p>
+            <ul>
+              <li><a data-en="Buy me a coffee via Ko-fi" data-pt="Me compre um café via Ko-fi" href="https://ko-fi.com/crossgenesis" target="_blank">Buy me a coffee via Ko-fi</a></li>
+              <li><a data-en="Commission me via VGen" data-pt="Commissione-me via VGen" href="https://vgen.co/AstraRaksell" target="_blank">Commission me via VGen</a></li>
+              <li><a data-en="Buy me a gift from my Throne Wishlist" data-pt="Me compre um presente da minha Lista de Desejos da Throne" href="https://throne.com/astraraksell" target="_blank">Buy me a gift from my Throne Wishlist</a></li>
+              <li><a data-en="Buy my merch via Katdragonz Shop" data-pt="Compre minha merchandise via Katdragonz Shop" href="https://katdragonz.com/collections/astra" target="_blank">Buy my merch via Katdragonz Shop</a></li>
+              <li data-en="Email: <a href='mailto:gabrielbinda08@email.com'>gabrielbinda08@email.com</a>"
+                  data-pt="E-mail: <a href='mailto:gabrielbinda08@email.com'>gabrielbinda08@email.com</a>">
+                Email: <a href="mailto:gabrielbinda08@email.com">gabrielbinda08@email.com</a>
+              </li>
+            </ul>
+          </section>
+        </div>
 
       </div>
-    </div>
+    </main>
 
-    <!-- FULL WIDTH: projects -->
-    <section id="projects">
-      <h2 data-en="Projects" data-pt="Projetos">Projects</h2>
-      <p data-en="Things I have created over time." data-pt="Coisinhas que fiz ao longo do tempo.">
-        Things I have created over time.
+    <footer>
+      <nav>
+        <a href="./" data-en="Home" data-pt="Início">Home</a> ·
+        <a href="privacy/" data-en="Privacy" data-pt="Privacidade">Privacy</a>
+      </nav>
+      <p data-en="Created by <a href='https://github.com/gbinda08'>Binda</a>"
+         data-pt="Criado por <a href='https://github.com/gbinda08'>Binda</a>">
+        Created by <a href="https://github.com/gbinda08">Binda</a>
       </p>
+    </footer>
 
-      <h3 data-en="Web" data-pt="Web">Web</h3>
-      <ul>
-        <li>
-          <a href="projects/Astra-Raksell-Wiki-Page/">Astra Raksell Wiki Page</a>
-          <br />
-          <span data-en="A website for the vtuber Astra Raksell, built with HTML, CSS, and JavaScript."
-                data-pt="Um website para o Vtuber, Astra Raksell, construído com HTML, CSS e JavaScript.">
-            A website for the vtuber Astra Raksell, built with HTML, CSS, and JavaScript.
-          </span>
-        </li>
-        <li>
-          <a href="projects/Junqueira-Biju/">Junqueira Biju</a>
-          <br />
-          <span data-en="Landing Page for a jewelry store, built with HTML and CSS."
-                data-pt="Landing Page para uma loja de bijuteria, construída com HTML e CSS.">
-            Landing Page for a jewelry store, built with HTML and CSS.
-          </span>
-        </li>
-        <li>
-          <a href="projects/StreamBingo/">Stream Bingo</a>
-          <br />
-          <span data-en="A bingo you can edit and save locally. Built with JS, HTML and CSS."
-                data-pt="Um bingo que você pode editar e salvar localmente. Construído com JS, HTML e CSS.">
-            A bingo you can edit and save locally. Built with JS, HTML and CSS.
-          </span>
-        </li>
-      </ul>
-    </section>
-
-    <!-- TWO-COLUMN: links + support -->
-    <div class="bottom-grid">
-
-      <section id="links">
-        <h2 data-en="Links/Contact" data-pt="Links/Contato">Links/Contact</h2>
-        <ul>
-          <li>GitHub: <a href="https://github.com/gbinda08" target="_blank">gbinda08</a></li>
-          <li>X (Twitter): <a href="https://twitter.com/AstraRaksell" target="_blank">AstraRaksell</a></li>
-          <li>Twitch: <a href="https://twitch.tv/AstraRaksell" target="_blank">AstraRaksell</a></li>
-          <li>Youtube: <a href="https://youtube.com/@AstraRaksell" target="_blank">AstraRaksell</a></li>
-          <li>Steam: <a href="https://steamcommunity.com/id/CrossGenesis" target="_blank">CrossGenesis</a></li>
-        </ul>
-      </section>
-
-      <section id="support">
-        <h2 data-en="Support" data-pt="Suporte">Support</h2>
-        <p data-en="Feel free to support me if you like my work!" data-pt="Sinta-se livre para me apoiar se gostar do meu trabalho!">
-          Feel free to support me if you like my work!
-        </p>
-        <ul>
-          <li><a data-en="Buy me a coffee via Ko-fi" data-pt="Me compre um café via Ko-fi" href="https://ko-fi.com/crossgenesis" target="_blank">Buy me a coffee via Ko-fi</a></li>
-          <li><a data-en="Commission me via VGen" data-pt="Commissione-me via VGen" href="https://vgen.co/AstraRaksell" target="_blank">Commission me via VGen</a></li>
-          <li><a data-en="Buy me a gift from my Throne Wishlist" data-pt="Me compre um presente da minha Lista de Desejos da Throne" href="https://throne.com/astraraksell" target="_blank">Buy me a gift from my Throne Wishlist</a></li>
-          <li><a data-en="Buy my merch via Katdragonz Shop" data-pt="Compre minha merchandise via Katdragonz Shop" href="https://katdragonz.com/collections/astra" target="_blank">Buy my merch via Katdragonz Shop</a></li>
-          <li data-en="Email: <a href='mailto:gabrielbinda08@email.com'>gabrielbinda08@email.com</a>"
-              data-pt="E-mail: <a href='mailto:gabrielbinda08@email.com'>gabrielbinda08@email.com</a>">
-            Email: <a href="mailto:gabrielbinda08@email.com">gabrielbinda08@email.com</a>
-          </li>
-        </ul>
-      </section>
-
-    </div>
-
-  </main>
-
-  <footer>
-    <nav>
-      <a href="/" data-en="Home" data-pt="Início">Home</a> ·
-      <a href="privacy/" data-en="Privacy" data-pt="Privacidade">Privacy</a>
-    </nav>
-    <p data-en="Created by <a href='https://github.com/gbinda08'>Binda</a>"
-       data-pt="Criado por <a href='https://github.com/gbinda08'>Binda</a>">
-      Created by <a href="https://github.com/gbinda08">Binda</a>
-    </p>
-  </footer>
+  </div>
 
   <script src="resources/js/main.js"></script>
 </body>
